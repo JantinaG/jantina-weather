@@ -1,13 +1,33 @@
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
+import React from "react";
+import "bootstrap/dist/css/bootstrap.css";
+import CityWeather from "./CityWeather";
+import CurrentLocation from "./CurrentLocation";
+import Footer from "./Footer";
+import Forecast from "./Forecast";
+import RiddleBox from "./RiddleBox";
+import Search from "./Search";
 
-function App() {
+export default function App() {
   return (
     <div className="App">
-     <h1>Weather App</h1>
-      <footer>Coded by Jantina Eefting and is {" "} <a href="https://github.com/JantinaG/jantina-weather" target="blank" > open sourced</a> </footer>
+      <div className="App">
+        <div className="card card-body">
+          <div className="container">
+            <div className="row">
+              <CityWeather />
+              <div className="col-4">
+                <div className="row">
+                  <Search />
+                  <CurrentLocation />
+                </div>
+                <RiddleBox />
+              </div>
+            </div>
+            <Forecast />
+          </div>
+        </div>
+        <Footer />
+      </div>
     </div>
   );
 }
-
-export default App;
