@@ -11,7 +11,7 @@ export default function CityWeather() {
     description: "Cold Sunny",
     temp: 10,
     wind: 11,
-    humidity: 20
+    humidity: 20,
   };
 
   return (
