@@ -6,7 +6,6 @@ import Footer from "./Footer";
 import Forecast from "./Forecast";
 import RiddleBox from "./RiddleBox";
 import Search from "./Search";
-import axios from "axios";
 
 export default function App() {
   return (
@@ -15,7 +14,7 @@ export default function App() {
         <div className="card card-body">
           <div className="container">
             <div className="row">
-              <CityWeather />
+              <CityWeather defaultCity="Doolin" />
               <div className="col-4">
                 <div className="row">
                   <Search />
