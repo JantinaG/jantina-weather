@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./styles.css";
 import axios from "axios";
+import FormatDate from "./FormatDate";
 
 export default function CityWeather(props) {
   const [data, setData] = useState({ ready: false });
@@ -10,9 +11,7 @@ export default function CityWeather(props) {
       ready: true,
       city: response.data.name,
       country: response.data.sys.country,
-      date: "18 July 2020",
-      day: "Saturday",
-      time: "21:25",
+      date: new Date(response.data.dt * 1000),
       description: response.data.weather[0].description,
       imgURL: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       temp: Math.round(response.data.main.temp),
@@ -30,12 +29,8 @@ export default function CityWeather(props) {
               {data.city}, {data.country}
             </h1>
           </div>
-          <div className="col-4 cityDates">
-            <h6>{data.date}</h6>
-            <h6>
-              {data.day}, {data.time}
-            </h6>
-          </div>
+          <FormatDate date={data.date} />
+
           <div className="col-6 middleBlock">
             <img
               src={data.imgURL}
