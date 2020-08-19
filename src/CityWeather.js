@@ -30,7 +30,6 @@ export default function CityWeather(props) {
             </h1>
           </div>
           <FormatDate date={data.date} />
-
           <div className="col-6 middleBlock">
             <img
               src={data.imgURL}

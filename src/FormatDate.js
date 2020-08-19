@@ -24,7 +24,7 @@ export default function FormatDate(props) {
     "November",
     "December",
   ];
-  let date = props.date.getDate();
+  let dateNr = props.date.getDate();
   let month = months[props.date.getMonth()];
   let year = props.date.getFullYear();
   let day = days[props.date.getDay()];
@@ -36,7 +36,7 @@ export default function FormatDate(props) {
   return (
     <div className="col-4 cityDates">
       <h6>
-        {date} {month} {year}
+        {dateNr} {month} {year}
       </h6>
       <h6>
         {day}, {time}
