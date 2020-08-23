@@ -8,7 +8,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
 export default function CityWeather(props) {
-  const apiKey = "3c57a9d63873260ca8362886141d8b51";
   const [data, setData] = useState({ ready: false });
   const [city, setCity] = useState(null);
 
@@ -27,6 +26,7 @@ export default function CityWeather(props) {
   }
 
   function search() {
+    const apiKey = "3c57a9d63873260ca8362886141d8b51";
     let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
     axios.get(apiURL).then(handleData);
@@ -42,6 +42,7 @@ export default function CityWeather(props) {
   }
 
   function displayLocation(position) {
+    const apiKey = "3c57a9d63873260ca8362886141d8b51";
     let currentLat = position.coords.latitude;
     let currentLong = position.coords.longitude;
     let urlLocation = `https://api.openweathermap.org/data/2.5/weather?lat=${currentLat}&lon=${currentLong}&appid=${apiKey}&units=metric`;
