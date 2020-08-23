@@ -1,6 +1,6 @@
 import React from "react";
 import FormatDate from "./FormatDate";
-import TempConversion from "./TempConversion"
+import TempConversion from "./TempConversion";
 
 export default function WeatherInfo(props) {
   return (
@@ -20,8 +20,7 @@ export default function WeatherInfo(props) {
           />
         </div>
         <div className="col-6 middleBlock">
-          <TempConversion celsius={props.data.temp}/>
-          
+          <TempConversion celsius={props.data.temp} />
           <p className="description">{props.data.description}</p>
         </div>
       </div>

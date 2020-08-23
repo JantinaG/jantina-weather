@@ -79,7 +79,7 @@ export default function CityWeather(props) {
                 </button>
               </div>
             </div>
-            <RiddleBox />
+            <RiddleBox time={data.date} />
           </div>
         </div>
         <Forecast city={data.city} />
