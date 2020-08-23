@@ -6,7 +6,7 @@ export default function WeatherInfo(props) {
   return (
     <div className="col-8">
       <div className="row">
-        <div className="col-8 cityDates">
+        <div className="col-8">
           <h1>
             {props.data.city}, {props.data.country}
           </h1>

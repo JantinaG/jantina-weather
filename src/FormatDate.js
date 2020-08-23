@@ -34,7 +34,7 @@ export default function FormatDate(props) {
   let time = `${hours}:${minutes}`;
 
   return (
-    <div className="col-4 cityDates">
+    <div className="col-4">
       <h6>
         {dateNr} {month} {year}
       </h6>

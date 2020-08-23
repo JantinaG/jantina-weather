@@ -43,6 +43,7 @@ export default function RiddleBox(props) {
       </div>
     );
   }
+
   if (hours === 2 || hours === 14) {
     return (
       <div className="col-12 riddleBox">

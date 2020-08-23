@@ -11,10 +11,10 @@ export default function ForecastDisplay(props) {
   }
 
   return (
-    <div class="col-sm-2 fiveDay">
+    <div className="col-sm-2 fiveDay">
       <h6>{hours()}</h6>
       <img src={img} alt={props.data.weather[0].description} />
-      <p class="text-muted">
+      <p className="text-muted">
         <strong>{Math.round(props.data.main.temp_max)}*C</strong>/
         {Math.round(props.data.main.temp_min)}
         *C

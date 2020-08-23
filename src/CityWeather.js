@@ -10,14 +10,14 @@ import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 export default function CityWeather(props) {
   const apiKey = "3c57a9d63873260ca8362886141d8b51";
   const [data, setData] = useState({ ready: false });
-  const [city, setCity] = useState(props.defaultCity);
+  const [city, setCity] = useState(null);
 
   function handleData(response) {
     setData({
       ready: true,
       city: response.data.name,
       country: response.data.sys.country,
-      date: new Date(response.data.dt * 1000),
+      date: new Date(),
       description: response.data.weather[0].description,
       imgURL: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       temp: Math.round(response.data.main.temp),
@@ -86,7 +86,35 @@ export default function CityWeather(props) {
       </div>
     );
   } else {
-    search();
-    return "Loading...";
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="col-8">
+            <h1>Search a city</h1>
+          </div>
+          <div className="col-4">
+            <div className="row">
+              <div className="col-10 padding">
+                <form onSubmit={handleSubmit}>
+                  <input
+                    className="form-control search"
+                    type="search"
+                    placeholder="🔍 Search"
+                    autoComplete="off"
+                    onChange={handleCityName}
+                  />
+                </form>
+              </div>
+              <div className="col-2 padding">
+                <button className="location" onClick={getLocation}>
+                  <FontAwesomeIcon icon={faMapMarkerAlt} />
+                  <i className="fas fa-map-marker-alt" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>{" "}
+      </div>
+    );
   }
 }
