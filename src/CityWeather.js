@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import "./styles.css";
 import axios from "axios";
-import CurrentLocation from "./CurrentLocation";
 import RiddleBox from "./RiddleBox";
 import WeatherInfo from "./WeatherInfo";
 import Forecast from "./Forecast";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
 export default function CityWeather(props) {
+  const apiKey = "3c57a9d63873260ca8362886141d8b51";
   const [data, setData] = useState({ ready: false });
   const [city, setCity] = useState(props.defaultCity);
 
@@ -25,7 +27,6 @@ export default function CityWeather(props) {
   }
 
   function search() {
-    let apiKey = "3c57a9d63873260ca8362886141d8b51";
     let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
     axios.get(apiURL).then(handleData);
@@ -38,6 +39,19 @@ export default function CityWeather(props) {
 
   function handleCityName(event) {
     setCity(event.target.value);
+  }
+
+  function displayLocation(position) {
+    let currentLat = position.coords.latitude;
+    let currentLong = position.coords.longitude;
+    let urlLocation = `https://api.openweathermap.org/data/2.5/weather?lat=${currentLat}&lon=${currentLong}&appid=${apiKey}&units=metric`;
+
+    axios.get(urlLocation).then(handleData);
+  }
+
+  function getLocation(event) {
+    event.preventDefault();
+    navigator.geolocation.getCurrentPosition(displayLocation);
   }
 
   if (data.ready) {
@@ -58,7 +72,12 @@ export default function CityWeather(props) {
                   />
                 </form>
               </div>
-              <CurrentLocation />
+              <div className="col-2 padding">
+                <button className="location" onClick={getLocation}>
+                  <FontAwesomeIcon icon={faMapMarkerAlt} />
+                  <i className="fas fa-map-marker-alt" />
+                </button>
+              </div>
             </div>
             <RiddleBox />
           </div>
