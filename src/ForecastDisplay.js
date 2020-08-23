@@ -15,7 +15,8 @@ export default function ForecastDisplay(props) {
       <h6>{hours()}</h6>
       <img src={img} alt={props.data.weather[0].description} />
       <p class="text-muted">
-        <strong>{props.data.main.temp_max}*C</strong>/{props.data.main.temp_min}
+        <strong>{Math.round(props.data.main.temp_max)}*C</strong>/
+        {Math.round(props.data.main.temp_min)}
         *C
       </p>
     </div>

@@ -29,6 +29,6 @@ export default function Forecast(props) {
 
     axios.get(forecastURL).then(handleForecast);
 
-    return "Loading...";
+    return null;
   }
 }
