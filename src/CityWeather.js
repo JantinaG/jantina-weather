@@ -4,6 +4,7 @@ import axios from "axios";
 import CurrentLocation from "./CurrentLocation";
 import RiddleBox from "./RiddleBox";
 import WeatherInfo from "./WeatherInfo";
+import Forecast from "./Forecast";
 
 export default function CityWeather(props) {
   const [data, setData] = useState({ ready: false });
@@ -41,25 +42,28 @@ export default function CityWeather(props) {
 
   if (data.ready) {
     return (
-      <div className="row">
-        <WeatherInfo data={data} />
-        <div className="col-4">
-          <div className="row">
-            <div className="col-10 padding">
-              <form onSubmit={handleSubmit}>
-                <input
-                  className="form-control search"
-                  type="search"
-                  placeholder="🔍 Search"
-                  autoComplete="off"
-                  onChange={handleCityName}
-                />
-              </form>
+      <div className="container">
+        <div className="row">
+          <WeatherInfo data={data} />
+          <div className="col-4">
+            <div className="row">
+              <div className="col-10 padding">
+                <form onSubmit={handleSubmit}>
+                  <input
+                    className="form-control search"
+                    type="search"
+                    placeholder="🔍 Search"
+                    autoComplete="off"
+                    onChange={handleCityName}
+                  />
+                </form>
+              </div>
+              <CurrentLocation />
             </div>
-            <CurrentLocation />
+            <RiddleBox />
           </div>
-          <RiddleBox />
         </div>
+        <Forecast city={data.city} />
       </div>
     );
   } else {
