@@ -9,10 +9,9 @@ import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
 export default function CityWeather(props) {
   const [data, setData] = useState({ ready: false });
-  const [city, setCity] = useState(props.city);
+  const [city, setCity] = useState(null);
 
   function handleData(response) {
-    console.log("call handledata");
     setData({
       ready: true,
       city: response.data.name,
@@ -27,7 +26,6 @@ export default function CityWeather(props) {
   }
 
   function search() {
-    console.log("call search");
     const apiKey = "3c57a9d63873260ca8362886141d8b51";
     let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
@@ -37,16 +35,13 @@ export default function CityWeather(props) {
   function handleSubmit(event) {
     event.preventDefault();
     search();
-    console.log("call handlesubmit");
   }
 
   function handleCityName(event) {
     setCity(event.target.value);
-    console.log("call handlecityname");
   }
 
   function displayLocation(position) {
-    console.log("call displaylocation");
     const apiKey = "3c57a9d63873260ca8362886141d8b51";
     let currentLat = position.coords.latitude;
     let currentLong = position.coords.longitude;
@@ -56,7 +51,6 @@ export default function CityWeather(props) {
   }
 
   function getLocation(event) {
-    console.log("call getlocation");
     event.preventDefault();
     navigator.geolocation.getCurrentPosition(displayLocation);
   }
